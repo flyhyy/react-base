@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用jsx创建虚拟dom</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.22.17/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+
+<!--此处一定要写babel-->
+<script type="text/babel">
+
+const root = document.getElementById('root')
+const hello = <h1 id="hello">Hello world,react</h1>
+const vdom  = (
+
+     <h1>
+         <span>
+             hello
+         </span>
+     </h1>
+)
+
+ReactDOM.render(vdom,root)
+
+</script>
+<!--<script type="text/javascript">-->
+<!--    const vdom = React.createElement('h1',{-->
+<!--      id:'title'-->
+<!--    },'hello react')-->
+
+<!--    ReactDOM.render(vdom,document.getElementById('root'))-->
+<!--</script>-->
+</html>
