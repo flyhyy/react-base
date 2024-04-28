@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>react</title>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+<script type="text/javascript">
+    class  Person{
+            constructor(name,age) {
+                this.name = name
+                this.age = age
+            }
+            speak(){
+                // 方法式放在 原型链上，供实例使用
+                // 通过实例调用该方法(speak)时，该方法(speak)中的this就是Person实例
+                console.log(this)
+                console.log(`name:${this.name},age:${this.age}`)
+            }
+    }
+    // const  user = new Person('张三',12)
+    // user.speak()
+    // user.speak.call({name:'1',age:2})
+    // user.speak.apply([{name:'1',age:"2"}])
+    // user.speak.bind()
+    class  Student  extends  Person{
+        constructor(name,age,grade) {
+            super(name,age);
+            this.grade = grade
+        }
+        // 重写从父类过来的方法
+
+        speak() {
+            console.log(`name:${this.name},age:${this.age},grade:${this.grade}`)
+
+        }
+    }
+    const s1 = new Student('王五',23,'高一')
+    s1.speak()
+
+</script>
+
+</html>

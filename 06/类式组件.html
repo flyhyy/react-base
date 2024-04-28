@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>react</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.22.17/babel.min.js"></script>
+    <style>
+        .h1 {
+            background: #61dafb;
+            color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+<!--此处一定要写babel-->
+<script type="text/babel">
+// 创建类式组件
+    class  Demo extends  React.Component{
+        render(){
+            return <h2>这是创建的类式组件</h2>
+        }
+    }
+//     渲染组件到页面
+  ReactDOM.render(<Demo/>,document.getElementById('root'))
+
+</script>
+
+</html>

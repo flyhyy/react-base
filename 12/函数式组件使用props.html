@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>state</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.22.17/babel.min.js"></script>
+    <!--    propType 类型约束-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.8.1/prop-types.min.js"></script>
+    <style>
+        .h1 {
+            background: #61dafb;
+            color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+<div id="root"></div>
+</body>
+
+<!--此处一定要写babel-->
+<script type="text/babel">
+
+    const root = document.getElementById('root')
+
+    class User extends React.Component {
+
+
+        render() {
+            const {name, age} = this.props
+            return <h1>名字：{name}, 年龄:{age}</h1>
+        }
+    }
+
+    // 类型限制
+    User.propTypes = {
+        name: PropTypes.string,
+        // age: PropTypes.number.isRequired, 必传
+        //   eat:PropTypes.func
+    }
+    // 默认值设置
+    User.defaultProps = {
+        name: '里斯'
+    }
+
+    const obj = {name: 12, age: 11}
+    ReactDOM.render(<User age={11}/>, root)
+</script>
+
+</html>

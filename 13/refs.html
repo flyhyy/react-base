@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>state</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.22.17/babel.min.js"></script>
+    <!--    propType 类型约束-->
+    <!--    <script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.8.1/prop-types.min.js"></script>-->
+    <script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.8.1/prop-types.js"></script>
+    <style>
+
+        .h1 {
+            background: #61dafb;
+            color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+<div id="root"></div>
+</body>
+
+<!--此处一定要写babel-->
+<script type="text/babel">
+
+    const root = document.getElementById('root')
+
+    class Demo extends React.Component {
+        state = {
+            isHot:false
+    }
+     //   react.creatRef 调用后可以返回一个容器，该容器可以存储被ref 所标识的节点
+     myRef = React.createRef()
+        clickThe = () => {
+            // const {input1} = this.refs
+            // alert(input1.value)
+            console.log(this.input1.value)
+        }
+
+        showData = () => {
+           const  i =   this.myRef.current
+            console.log(i.value)
+            const {input2} = this.refs
+            alert(input2.value)
+        }
+        saveInput =(c)=>{
+        this.input1 = c
+        }
+
+        render() {
+            const {isHot}  = this
+            return (
+                <div>
+                    <input ref={this.myRef}/>
+
+                    <p>今天天气很{isHot?'炎热':'寒冷 '}</p>
+                    {
+      //                   注释方式
+      // 不建议使用 字符串 ref, 因为后续可能会被react弃用
+                    }
+                    {
+                    //    类绑定
+                    }
+                     <input ref={this.saveInput}/>
+                    <input ref={fal => this.input1 = val}/>
+
+                    <button onClick={this.clickThe}>点击</button>
+                    <input ref="input2" placeholder="失去焦点" onBlur={this.showData}/>
+
+                </div>
+            )
+        }
+
+    }
+
+    ReactDOM.render(<Demo/>, root)
+</script>
+
+</html>

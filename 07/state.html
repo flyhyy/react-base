@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>state</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.22.17/babel.min.js"></script>
+    <style>
+        .h1 {
+            background: #61dafb;
+            color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+<!--此处一定要写babel-->
+<script type="text/babel">
+
+    const root = document.getElementById('root')
+
+    class Prop extends  React.Component{
+
+
+        render(){
+        return <h1  >今天天气很{this.props.text}</h1>
+        }
+    }
+
+    // const setIsHot = ()=>{
+    //     console.log('setIsHot')
+    // }
+
+    ReactDOM.render(<Prop text="寒冷"/>, root)
+</script>
+
+</html>

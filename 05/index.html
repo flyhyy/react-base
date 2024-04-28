@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jsx 练习</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.22.17/babel.min.js"></script>
+    <style>
+        .h1 {
+            background: #61dafb;
+            color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+<!--此处一定要写babel-->
+<script type="text/babel">
+    /**
+     *  js 表达式 会产生一个值，可以放在任何一个需要值的地方
+     *
+     */
+
+
+    /**
+     * jsx 全称 javascript XML
+     */
+    const root = document.getElementById('root')
+    const list = ['angular', 'react', 'vue']
+    const Li = () => {
+        return list.map(item => {
+            return <li>{{ item }}</li>
+        })
+    }
+    const vdom = (
+        <div>
+            <h1>前端js框架列表</h1>
+            <ul>
+                {
+                    list.map(item=>{
+                        return <li key={item}>{item}</li>
+
+                    })
+                }
+            </ul>
+        </div>
+    )
+
+    ReactDOM.render(vdom, root) 
+</script>
+
+</html>

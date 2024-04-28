@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/16.8.0/umd/react.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/16.8.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.22.17/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+
+<!--此处一定要写babel-->
+<script type="text/babel">
+
+    const root = document.getElementById('root')
+    class Login extends React.Component {
+        state ={
+            form:{
+                username:'',
+                password:'',
+                code:''
+            }
+        }
+        submit = (event) => {
+            // 阻止表单提交
+            event.preventDefault()
+            const {username,password}  =this
+            console.log(username.value,password.value)
+        }
+        changeUser =(event)=>{
+            this.setState({
+                form:{
+                    username:  event.target.value
+                }
+            })
+        }
+        // 柯里化写法
+        changeData =(type)=>{
+            return (event)=>{
+                this.setState({
+                    form:{
+                        [type]:event.target.value
+                    }
+                })
+            }
+        }
+        //  不用柯里化 写法
+        changeCode = (type,event)=>{
+            this.setState({
+                form:{
+                    [type]:event.target.value
+                }
+            })
+        }
+        render() {
+
+            return (
+                <form action="#" onSubmit={this.submit}>
+                    <label label="用户名">
+                        用户名  <input onChange={this.changeUser}/>
+                    </label>
+                    <label label="密码">
+                        密码 <input type="password"  onChange={this.changeData('password')}/>
+                    </label>
+                    <label label="密码">
+                        验证码 <input type="password"  onChange={event=>this.changeCode('code',event)}/>
+                    </label>
+                    <button>提交</button>
+                </form>
+            )
+        }
+    }
+
+    ReactDOM.render(<Login/>, root)
+
+
+</script>
+</html>
